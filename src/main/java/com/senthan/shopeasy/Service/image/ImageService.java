@@ -60,7 +60,7 @@ public class ImageService implements IImageService {
                 savedImages.add(imageDto);
             }
         } catch (SQLException | IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
         return savedImages;
     }
