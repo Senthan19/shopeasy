@@ -6,6 +6,7 @@ import com.senthan.shopeasy.dto.ImageDto;
 import com.senthan.shopeasy.exception.ResourceNotFoundException;
 import com.senthan.shopeasy.model.Image;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,10 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class ImageService implements IImageService {
-    private final ImageRepository imageRepository;
-    private final IProductService productService;
+    @Autowired
+    private ImageRepository imageRepository;
+    @Autowired
+    private  IProductService productService;
     @Override
     public Image getImageById(Long id) {
         return imageRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Image is Not found!"));

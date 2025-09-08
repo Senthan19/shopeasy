@@ -5,6 +5,7 @@ import com.senthan.shopeasy.exception.AlreadyExistsException;
 import com.senthan.shopeasy.exception.ResourceNotFoundException;
 import com.senthan.shopeasy.model.Category;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
@@ -12,9 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class CategoryService implements ICategoryService{
-    private final CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
     @Override
     public Category getCategoryById(Long id) {
         return categoryRepository.findById(id)
